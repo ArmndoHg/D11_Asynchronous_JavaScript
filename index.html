@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Asynchronous JavaScript</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+      integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N"
+      crossorigin="anonymous"
+    />
+    <style></style>
+  </head>
+  <body>
+    <h1 class="text-center">List</h1>
+    <div id="main" class="container"><ul id="l1"></ul></div>
+    <script>
+      const options = {
+        method: "GET",
+        headers: {
+          "X-RapidAPI-Key":
+            "6284002c8fmsh48893274fe01f22p15ad42jsn3a0672bc756e",
+          "X-RapidAPI-Host": "deezerdevs-deezer.p.rapidapi.com",
+        },
+      };
+      const getPinkfloyd = () => {
+        fetch(
+          "https://deezerdevs-deezer.p.rapidapi.com/search?q=pink floyd",
+          options
+        )
+          .then((response) => response.json())
+          .then((response) => {
+            return response;
+          })
+          .catch((err) => console.error(err));
+      };
+
+      getPinkfloyd();
+
+      const pinkfloyd = () => {
+        let data = response;
+        const ul = document.getElementById("l1");
+        for (let i = 0; i < data.length; i++) {
+          const li = document.createElement("li");
+          li.innerHTML = `<img src="${data.cover}" class="mr-3" alt="...">
+<div class="media-body">
+  <h5 class="mt-0 mb-1">List-based media object</h5>
+  <p>All my girls vintage Chanel baby. So you can have your cake. Tonight, tonight, tonight, I'm walking on air. Slowly swallowing down my fear, yeah yeah. Growing fast into a bolt of lightning. So hot and heavy, 'Til dawn. That fairy tale ending with a knight in shining armor. Heavy is the head that wears the crown.</p>
+</div>`;
+          ul.appendChild(li);
+        }
+      };
+      pinkfloyd();
+    </script>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
